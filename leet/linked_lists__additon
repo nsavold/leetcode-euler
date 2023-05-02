@@ -1,0 +1,38 @@
+'''https://leetcode.com/problems/add-two-numbers/description/'''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+
+  def to_List(a_list: int): # how do i properly handle linked lists in python?
+    ll = a_list   
+    head = prev = None
+    for nums in ll:
+      node = ListNode(int(nums))
+      if prev is not None:
+        prev.next = node
+      prev = node
+      if head is None:
+        head = prev
+    return head
+
+  def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    num_1 = ''
+    num_2 = ''
+    num_answer = 0
+    l3 = []
+     
+    while l1:
+      num_1 += str(l1.val)
+      l1 = l1.next
+    while l2:
+      num_2 += str(l2.val)
+      l2 = l2.next
+    
+    sum_of_two = str(int(num_1[::-1]) + int(num_2[::-1]))[::-1]
+    for chars in sum_of_two:
+      l3.append(chars)
+    print(l3)
+    return Solution.to_List(l3)
